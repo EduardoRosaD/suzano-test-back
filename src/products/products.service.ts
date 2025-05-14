@@ -9,7 +9,6 @@ export class ProductsService {
 
 async create(createProductDto: CreateProductDto) {
     const existingProduct = await this.productsRepository.findByName(createProductDto.nome);
-    console.log('existingProduct', existingProduct);
     if (existingProduct) {
         throw new BadRequestException(`Produto com nome "${createProductDto.nome}" já existe`);
     }
@@ -35,7 +34,6 @@ async create(createProductDto: CreateProductDto) {
   }
 
   async remove(id: number) {
-    const existing = await this.findOne(id);
     await this.productsRepository.remove(id);
     return { message: `Produto com ID ${id} removido com sucesso` };
   }

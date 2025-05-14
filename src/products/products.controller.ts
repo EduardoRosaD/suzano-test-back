@@ -4,9 +4,10 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { JwtAuthGuard } from '../auth/jwt.guard';
 import { UseGuards } from '@nestjs/common';
+import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 
-
-
+@ApiTags('Products')
+@ApiBearerAuth() 
 @UseGuards(JwtAuthGuard)
 @Controller('products')
 export class ProductsController {
